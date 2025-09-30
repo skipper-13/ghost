@@ -1,0 +1,51 @@
+{{!< default}}
+
+{{!-- Hero --}}
+<section class="px-5 sm:px-6 mt-6 mb-12">
+  <div class="max-w-container mx-auto flex flex-col gap-8 md:flex-row lg:gap-12 min-h-60">
+    {{#if @site.cover_image}}
+      <figure class="max-w-[400px] {{#match @custom.hero_cover_image_aspect_ratio "hidden"}} hidden{{/match}}{{#match @custom.hero_cover_image_aspect_ratio "1/1"}} [&_img]:aspect-[1/1]{{/match}}{{#match @custom.hero_cover_image_aspect_ratio "16/9"}} [&_img]:aspect-[16/9]{{/match}}{{#match @custom.hero_cover_image_aspect_ratio "4/3"}} [&_img]:aspect-[4/3]{{/match}}{{#match @custom.hero_cover_image_aspect_ratio "3/4"}} [&_img]:aspect-[3/4]{{/match}}">
+        {{> image
+          picture_class="flex h-full"
+          image_type="site"
+          image_class="w-full object-cover object-center"
+          image_url=@site.cover_image
+          size_s=true
+          size_m=true
+          size_l=true
+          size_xl=true
+          size_xxl=false
+          sizes="(max-width: 639px) 90vw,  400px"
+          loading="eager"
+        }}
+      </figure>
+    {{/if}}
+    
+    <div class="flex flex-col gap-4 flex-1 justify-center">
+      {{!-- Headline --}}
+      <h1 class="font-bold tracking-tight text-balance text-3xl sm:text-4xl md:text-5xl{{#match @custom.hero_cover_image_aspect_ratio "hidden"}} lg:text-6xl{{/match}}" data-hero-headline>
+        {{#if @custom.hero_headline}}{{{@custom.hero_headline}}}{{else}}{{@site.title}}{{/if}}
+      </h1>
+
+      {{!-- Subheading --}}
+      {{#if @custom.hero_subheading}}
+        <p id="hero-input-label" class="text-balance text-typ-tone text-lg md:text-xl" data-hero-subheading>
+          {{{@custom.hero_subheading}}}
+        </p>
+      {{/if}}
+    </div>
+  </div>
+</section>
+
+{{!-- Secondary navigation --}}
+{{> secondary-navigation }}
+
+{{!-- Posts --}}
+{{> post-feed }}
+
+{{!-- Pagination --}}
+<section class="px-5 sm:px-6 my-12">
+  <div class="max-w-container mx-auto text-center text-sm font-medium text-typ-tone [&_a]:mx-3 [&_a]:font-semibold [&_a]:hover:text-typ">
+    {{pagination}}
+  </div>
+</section>

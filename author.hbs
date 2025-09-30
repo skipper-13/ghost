@@ -1,0 +1,36 @@
+{{!< default}}
+
+{{#author}}
+  <section class="px-4 sm:px-6 mb-8" data-author>
+    <div class="max-w-xl mx-auto py-12 md:py-16 flex flex-col gap-3 items-center justify-center text-center">
+      {{#if profile_image}}
+        <figure class="rounded-full h-full relative" role="none">
+          {{> image
+            image_type="author"
+            image_class="object-cover size-24 rounded-full aspect-square"
+            image_url=profile_image
+            size_xs=true
+            size_s=true
+            size_m=true
+            sizes="(max-width: 600px) 100px, 160px"
+            loading="eager"
+          }}
+        </figure>
+      {{/if}}
+      <h1 class="font-bold tracking-tight text-2xl md:text-3xl lg:text-4xl">{{name}}</h1>
+      {{#if bio}}
+        <p class="text-lg text-typ-tone">{{bio}}</p>
+      {{/if}}
+    </div>
+  </section>
+{{/author}}
+
+{{!-- Posts --}}
+{{> post-feed }}
+
+{{!-- Pagination --}}
+<section class="px-5 sm:px-6 my-12">
+  <div class="max-w-container mx-auto text-center text-sm font-medium text-typ-tone [&_a]:mx-3 [&_a]:font-semibold [&_a]:hover:text-typ">
+    {{pagination}}
+  </div>
+</section>

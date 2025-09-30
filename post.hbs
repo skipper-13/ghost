@@ -1,0 +1,63 @@
+{{!< default}}
+
+{{#post}}
+  <section class="px-5 sm:px-6 my-8" data-post-hero>
+    <div class="max-w-content mx-auto flex flex-col gap-4">
+      <div class="flex items-center flex-wrap gap-2 text-base font-medium">
+        {{#foreach tags limit="1"}}
+          <a href="{{url}}" class="text-accent hover:underline" {{#if accent_color}}style="--color-accent:{{accent_color}}"{{/if}} data-post-hero-tag>{{name}}</a>
+          <span class="opacity-25">•</span>
+        {{/foreach}}
+        <time class="text-typ-tone" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time> 
+        <span class="opacity-25">•</span>
+        <span class="text-typ-tone">{{reading_time}}</span>
+      </div>
+
+      <h1 class="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl">{{title}}</h1>
+
+      <ul class="flex gap-3 font-medium text-typ-tone" data-post-hero-authors>
+        {{#foreach authors limit="10"}}
+          <li>
+            <a href="{{url}}" class="flex gap-1.5 items-center hover:underline">
+              {{#if profile_image}}
+                {{> image
+                  image_type="author"
+                  image_class="size-8 object-cover rounded-full"
+                  image_url=profile_image
+                  size_xxs=true
+                  size_xs=true
+                  sizes="32px"
+                }}
+              {{/if}}
+              <span>{{name}}</span>
+            </a>
+          </li>
+        {{/foreach}}
+      </ul>
+
+      {{#if feature_image}}
+        <figure class="w-full h-full relative mt-2" data-post-hero-figure>
+          {{> image
+            image_type="post"
+            image_class="w-full object-cover rounded-theme-xs aspect-[16/9] border border-brd bg-bgr-tone"
+            image_url=feature_image
+            size_s=true
+            size_m=true
+            size_l=true
+            size_xl=true
+            sizes="(max-width: 639px) 90vw, 720px"
+            loading="eager"
+          }}
+          {{!-- Figcaption --}}
+          {{#if feature_image_caption}}<figcaption class="mt-2 opacity-80 text-center text-sm [&>a]:text-brand [&>a]:underline [&>a]:decoration-2 [&>a:hover]:text-brand">{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>
+      {{/if}}
+    </div>
+  </section>
+
+  <article class="ghost-content prose md:prose-lg prose-theme"{{#unless access}} data-preview{{/unless}}>
+    {{content}}
+  </article>
+
+  {{> comments}}
+{{/post}}
