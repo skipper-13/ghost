@@ -1,0 +1,42 @@
+[data-nav="header"] li.nav-current:not(:has(a[href="#"],a[href*="#/portal"])) {
+  background-color: var(--color-background-tone);
+}
+
+[data-nav="secondary"] li.nav-current a {
+  background-color: var(--color-background-tone);
+  border-color: var(--color-border);
+}
+
+[data-hero-headline] span,
+[data-hero-subheading] span {
+  position: relative;
+  display: inline-block;
+}
+
+[data-hero-headline] span:before,
+[data-hero-subheading] span:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 25%;
+  width: 100%;
+  z-index: -1;
+  background-color: var(--color-brand);
+}
+
+[data-hero-headline] a,
+[data-hero-subheading] a { 
+  text-decoration: underline; 
+  text-decoration-thickness: clamp(3px,10%,5px);
+  text-decoration-color: var(--ghost-accent-color);
+
+  &:hover {
+    color: var(--color-brand);
+  }
+}
+[data-hero-headline] mark,
+[data-hero-subheading] mark {
+  background-color: hsla(60deg 100% 50% / 50%);
+  color: inherit;
+}

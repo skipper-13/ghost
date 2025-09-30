@@ -1,0 +1,60 @@
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Color & font definition */
+:root {
+  --font-system: system-ui, sans-serif;
+  --font-headings: var(--font-system);
+  --font-body: var(--font-system);
+
+  --container-width: 1080px;
+  --content-width: 680px; /*60ch;*/
+  --content-width-wide: 960px;
+  --wide-width: 960px;
+  --radius: 0px;
+  --radius-xxs: calc(var(--radius) - 8px);
+  --radius-xs: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) + 2px);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+
+  --logo-h-mobile: 28px;
+  --logo-w-mobile: auto;
+  --logo-h-desktop: 32px;
+  --logo-w-desktop: auto;
+  
+  --color-brand: var(--ghost-accent-color,#FD3D00);
+  --color-brand-contrast: hsl(0 0% 100%);
+  --color-accent: var(--ghost-accent-color);
+  --color-error: #fc365e;
+  --color-success: #48c774;
+  --color-typography: hsl(0 0% 15%);
+  --color-typography-tone: hsl(0 0% 40%);
+  --color-typography-content: hsl(0 0% 35%);
+  --color-typography-reverse: hsl(0 0% 95%);
+  --color-background: hsl(0 0% 100%);
+  --color-background-tone: hsl(0 0% 98%);
+  --color-background-opac: hsla(0 0% 100% / 75%);
+  --color-background-reverse: hsl(0 0% 12%);
+  --color-border: hsl(0 0% 90%);
+  --color-border-reverse: hsl(0 0% 20%);
+  --shadow: 0 5px 25px -5px rgba(0 0 0 / .1);
+}
+
+/* Font family definitions */
+body { font-family: var(--font-body); }
+article.ghost-content { font-family: var(--font-body); }
+h1,h2,h3,h4,h5,h6 { font-family: var(--font-headings); }
+
+/* No scrollbar */
+.no-scrollbar {
+  -ms-overflow-style: none; /* Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
