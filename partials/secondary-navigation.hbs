@@ -1,0 +1,14 @@
+{{#if @site.secondary_navigation}}
+  <section class="px-5 sm:px-6 mb-4">
+    <div class="max-w-container mx-auto">
+      <nav class="" data-nav="secondary">
+        {{navigation 
+          type="secondary"
+          ul_class="flex gap-1 overflow-x-scroll font-medium text-sm leading-none"
+          li_class=""
+          a_class="whitespace-pre border-2 block px-3 py-1.5 text-typ-tone border-transparent hover:bg-bgr-tone"
+        }}
+      </nav>
+    </div>
+  </section>
+{{/if}}

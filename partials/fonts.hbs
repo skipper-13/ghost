@@ -1,0 +1,79 @@
+{{!-- Typography --}}
+{{#match @custom.font_headings "!=" "System"}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{else match @custom.font_body "!=" "System"}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{/match}}
+
+<style> 
+  body { 
+    --font-headings: var(--gh-font-heading, var(--font-system));
+    --font-body: var(--gh-font-heading, var(--font-system));
+  }
+</style>
+
+{{!-- Headings --}}
+{{#match @custom.font_headings "Cinzel"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="serif"}}
+{{/match}}
+{{#match @custom.font_headings "Heebo"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_headings "Inter"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_headings "Instrument Sans"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_headings "Instrument Serif"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="serif"}}
+{{/match}}
+{{#match @custom.font_headings "Orbit"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_headings "Plus Jakarta Sans"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_headings "Prata"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="serif"}}
+{{/match}}
+{{#match @custom.font_headings "Space Mono"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="monospace"}}
+{{/match}}
+{{#match @custom.font_headings "Sulphur Point"}}
+  {{> font-loader font_headings=@custom.font_headings fallback="sans-serif"}}
+{{/match}}
+
+{{!-- Body --}}
+{{#match @custom.font_body "Cinzel"}}
+  {{> font-loader font_body=@custom.font_body fallback="serif"}}
+{{/match}}
+{{#match @custom.font_body "Heebo"}}
+  {{> font-loader font_body=@custom.font_body fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_body "Inter"}}
+  {{> font-loader font_body=@custom.font_body fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_body "Instrument Sans"}}
+  {{> font-loader font_body=@custom.font_body fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_body "Instrument Serif"}}
+  {{> font-loader font_body=@custom.font_body fallback="serif"}}
+{{/match}}
+{{#match @custom.font_body "Orbit"}}
+  {{> font-loader font_body=@custom.font_body fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_body "Plus Jakarta  Sans"}}
+  {{> font-loader font_body=@custom.font_body fallback="sans-serif"}}
+{{/match}}
+{{#match @custom.font_body "Prata"}}
+  {{> font-loader font_body=@custom.font_body fallback="serif"}}
+{{/match}}
+{{#match @custom.font_body "Space Mono"}}
+  {{> font-loader font_body=@custom.font_body fallback="monospace"}}
+{{/match}}
+{{#match @custom.font_body "Sulphur Point"}}
+  {{> font-loader font_body=@custom.font_body fallback="sans-serif"}}
+{{/match}}

@@ -1,0 +1,39 @@
+<article class="{{post_class}} flex flex-col justify-end relative min-h-60 md:min-h-80 z-[0] p-5 md:p-6 lg:p-8 border border-brd transition-[transform,shadow] hover:scale-[103%] hover:z-10 hover:shadow-[0_10px_20px_0_rgb(0_0_0/0.05)] {{#if featured}} bg-bgr-tone{{else}} bg-bgr{{/if}}" data-post-card>
+
+  <div class="relative z-[2] flex flex-col gap-4 h-full">
+    <div class="flex items-center flex-wrap gap-2 text-sm font-medium text-typ-tone leading-tight">
+      <time class="" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time> 
+      <span class="opacity-25">•</span>
+      <span class="text-typ-tone">{{reading_time}}</span>
+
+      <span class="flex-1"></span>
+
+      {{#if featured}}
+        <span data-post-card-featured class="text-yellow-400">
+          {{> icon name="star" icon_class="size-4"}}
+        </span>
+      {{/if}}
+    </div>
+
+    <h2 data-post-card-title class="font-semibold text-lg leading-tight md:text-xl md:leading-tight hover:underline">
+      <a href="{{url}}">{{title}}</a>
+    </h2>
+
+    <span class="flex-1"></span>
+
+    <div class="flex items-center justify-between flex-wrap gap-2 text-sm font-medium leading-tight">
+      {{#foreach tags limit="1"}}
+        <a href="{{url}}" class="text-accent hover:underline" {{#if accent_color}}style="--color-accent:{{accent_color}}"{{/if}} data-post-card-tag>{{name}}</a>
+      {{/foreach}}
+
+      {{#unless access}}
+        <span  data-post-card-visibility class="flex gap-1 relative capitalize">
+          {{> icon name="lock" icon_class="size-4" stroke_width="stroke-[2.5]"}}
+          <span class="whitespace-nowrap">
+            {{#has visibility="tiers"}}{{tiers}}{{else}}{{visibility}}{{/has}}
+          </span>
+        </span>
+      {{/unless}}
+    </div>
+  </div>
+</article>

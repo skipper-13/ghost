@@ -1,0 +1,61 @@
+<header class="px-5 sm:px-6 bg-bgr text-typ whitespace-nowrap" data-header>
+  <div class="max-w-container mx-auto py-4 flex items-center justify-center gap-2 relative">
+
+    {{!-- Brand --}}
+    <div class="flex-1 flex justify-start" data-header-brand>
+      <a class="" href="{{@site.url}}" data-brand>
+        {{> logo loading="eager"}}
+      </a>
+    </div>
+
+    {{!-- Navigation --}}
+    <nav class="relative hidden text-sm md:flex justify-center" data-nav="header">
+      {{navigation 
+        ul_class="flex gap-0.5"
+        li_class="flex items-center relative border border-transparent hover:bg-bgr-tone rounded-theme"
+        a_class="w-full flex px-3 py-1.5 rounded-theme"
+      }}
+    </nav>
+
+    {{!-- Actions --}}
+    <div class="flex gap-1 items-center" data-header-actions>
+      {{#if @custom.header_subscribe_button}}
+        {{#if @site.members_enabled}}
+          {{#unless @member}}
+            <button data-portal="signup"
+              class="text-sm flex items-center gap-1 bg-brand font-bold text-brand-contrast px-4 py-1.5 rounded-theme md:px-5 md:py-2 transition hover:brightness-105 mr-1">
+              <span>{{t "Subscribe"}}</span>
+            </button>
+          {{/unless}}
+        {{/if}}
+      {{/if}}
+
+      {{!-- Search button --}}
+      <button class="flex items-center justify-center rounded-theme size-8 md:size-9 hover:text-brand cursor-pointer" data-ghost-search title="{{t "Search"}}" aria-label="{{t "Search"}}">
+        {{> icon name="search" icon_class="size-5 stroke-2 fill-bgr-tone [&>svg]:fill-inherit"}}
+      </button>
+
+      {{!-- Member/User button --}}
+      {{#if @member}}
+        <button class="ml-1 relative size-8 md:size-9 hover:text-brand cursor-pointer" data-portal="account" aria-label="{{@member.name}}">
+          <img class="border border-opac shadow relative size-8 md:size-9 rounded-full" 
+            src="{{@member.avatar_image}}"
+            alt="{{@member.name}}">
+          {{>icon name="user" icon_class="absolute z-[-1] size-7 stroke-[1.5] inset-0.5 md:inset-1"}}
+        </button>
+      {{/if}}
+
+      {{!-- Menu button --}}
+      <button class="flex flex-col items-center gap-1 size-8 p-1 md:p-2 md:size-9 justify-center rounded-theme group md:hidden transition-transform group" 
+        data-menu-toggle aria-label="{{t "Menu toggle"}}" aria-expanded="false" aria-haspopup="true" aria-controls="menu"
+        @click="menuOpen = !menuOpen" :aria-expanded="menuOpen.toString()"
+      >
+        <span class="relative pointer-events-none h-0.5 rounded-sm bg-typ-tone w-5 transition-transform group-hover:bg-brand"
+              :class="menuOpen ? 'rotate-45 translate-y-[3px] w-4' : ''"></span>
+        <span class="relative pointer-events-none h-0.5 rounded-sm bg-typ-tone w-5 transition-transform group-hover:bg-brand"
+              :class="menuOpen ? '-rotate-45 -translate-y-[3px] w-4' : ''"></span>
+      </button>
+    </div>
+
+  </div>
+</header>

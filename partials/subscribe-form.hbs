@@ -1,0 +1,35 @@
+{{#if @site.members_enabled}}
+  <form class="group relative{{#if form_class}} {{form_class}}{{/if}}"
+    data-members-form="{{#if form_type}}{{form_type}}{{else}}subscribe{{/if}}" data-style="{{form_style}}">
+    {{#if name_field}}
+      <input data-members-name  class="{{input_class}}" autocomplete="name" type="text" placeholder="{{t "Your name"}}" 
+        aria-labelledby="{{#if input_label}}{{input_label}}{{else}}form-input-label{{/if}}" required>
+    {{/if}}
+    <input data-members-email class="{{input_class}}" 
+      type="email" autocomplete="email" placeholder="{{t "Your email address"}}" 
+      aria-labelledby="{{#if input_label}}{{input_label}}{{else}}form-input-label{{/if}}" required/> 
+    <button class="{{button_class}} cursor-pointer" type="submit">
+      <span>{{#if button_text}}{{button_text}}{{else}}{{t "Subscribe"}}{{/if}}</span>
+    </button>
+
+    {{!-- Success notification --}}
+    <div data-notification="success" class="absolute z-[1000] opacity-0 invisible group-[.success]:opacity-100 group-[.success]:visible group-[.success]:translate-y-0 left-0 -bottom-16 text-sm leading-tight flex items-center w-full max-w-md rounded-theme gap-2 bg-[rgba(0,0,0,0.75)] backdrop-blur text-white p-2 transition-all -translate-y-4">
+      {{> icon name="success" icon_class="size-6 text-success ml-1"}}
+      <p class="flex-1">{{t "Great! Check your inbox and click the link."}}</p>
+      <button type="button" class="flex items-center justify-center size-8 opacity-75 hover:opacity-100 "
+        @click="$el.parentNode.classList.add('opacity-0', 'invisible', '-translate-y-4');$el.parentNode.parentNode.classList.remove('success')">
+        {{> icon name="ghost-close" icon_class="size-4"}}
+      </button>
+    </div>
+
+    {{!-- Error notification --}}
+    <div data-notification="error" class="absolute z-[1000] opacity-0 invisible group-[.error]:opacity-100 group-[.error]:visible group-[.error]:translate-y-0 left-0 -bottom-16 text-sm leading-tight flex items-center w-full max-w-md rounded-theme gap-2 bg-[rgba(0,0,0,0.75)] backdrop-blur text-white p-2 transition-all -translate-y-4">
+      {{> icon name="error" icon_class="size-6 text-error ml-1"}}
+      <p class="flex-1">{{t "Sorry, something went wrong. Please try again."}}</p>
+      <button type="button" class="flex items-center justify-center size-8 opacity-75 hover:opacity-100 "
+        @click="$el.parentNode.classList.add('opacity-0', 'invisible', '-translate-y-4');$el.parentNode.parentNode.classList.remove('error')">
+        {{> icon name="ghost-close" icon_class="size-4"}}
+      </button>
+    </div>
+  </form>
+{{/if}}
